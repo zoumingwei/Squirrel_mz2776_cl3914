@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.shortcuts import HttpResponse
+from django.shortcuts import render,get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Squirrel
 from django.template import loader
 # Create your views here.
@@ -16,3 +16,8 @@ def sighting(request):
     }
     
     return HttpResponse(template.render(context,request))
+
+
+def update(request,squirrel_uni):
+    squirrel = get_object_or_404(Squirrel,Uni=squirrel_uni)
+    return HttpResponse(f'This is squirrel {squirrel.Uni}')
