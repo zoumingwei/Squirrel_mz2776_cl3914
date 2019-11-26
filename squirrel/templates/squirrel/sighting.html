@@ -1,0 +1,28 @@
+{% if all_squirrels %}
+    <table>
+    <tr>
+      <th>id</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Squirrel_Unique_id</th>
+      <th>Shift</th>
+      <th>Date</th>
+      <th>Age</th>
+    </tr>
+    {% for q in all_squirrels %}
+    <tr>
+      <th style="font-family:'Arial',serif;font-size:10pt"> {{ q.id }}</th>
+      <th style="font-family:'Arial',serif;font-size:10pt"> {{ q.Lat }}</th>
+      <th style="font-family:'Arial',serif;font-size:10pt"> {{ q.Long }}</th>
+      <th style="font-family:'Arial',serif;font-size:10pt"> {{ q.Uni }}</th>
+      <th style="font-family:'Arial',serif;font-size:10pt"> {{ q.Shift }}</th>
+      <th style="font-family:'Arial',serif;font-size:10pt"> {{ q.Date }}</th>
+      <th style="font-family:'Arial',serif;font-size:10pt"> {{ q.Age }}</th>
+      <th >
+	      <li><a href="/squirrel/{{q.Uni}}"> {{ 'update' }}
+      </a></li></th>
+    </tr> 
+    {% endfor %}
+{% else %}
+    <p>No squirrels are available.</p>
+{% endif %}
