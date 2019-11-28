@@ -20,4 +20,9 @@ def sighting(request):
 
 def update(request,squirrel_uni):
     squirrel = get_object_or_404(Squirrel,Uni=squirrel_uni)
-    return HttpResponse(f'This is squirrel {squirrel.Uni}')
+    return render(request, 'squirrel/detail.html',{'squirrel':squirrel})
+
+def kk(request,squirrel_uni):
+    squirrel = get_object_or_404(Squirrel,Uni=squirrel_uni)
+    squirrel.Lat = request.POST.get('Lat',False)
+    return HttpResponse('kk')
