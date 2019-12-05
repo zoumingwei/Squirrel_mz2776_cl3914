@@ -1,10 +1,14 @@
 {% if all_squirrels %}
     <table>
     <tr>
-      <th>id</th>
+      <th>
+	<ul><a href="/sightings/add"> {{ 'Add' }}
+      </a></ul></th>
+    </tr>
+    <tr>
+      <th>Squirrel_Unique_id</th>
       <th>Latitude</th>
       <th>Longitude</th>
-      <th>Squirrel_Unique_id</th>
       <th>Shift</th>
       <th>Date</th>
       <th>Age</th>
@@ -28,16 +32,32 @@
     </tr>
     {% for q in all_squirrels %}
     <tr>
-      <td style="font-family:'Arial',serif;font-size:20pt"> {{ q.id }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Uni }}</td>
       <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Lat }}</td>
       <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Long }}</td>
-      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Uni }}</td>
       <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Shift }}</td>
       <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Date }}</td>
       <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Age }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Primary_fur_color }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Location }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Specific_location }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Running }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Chasing }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Climbing }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Eating }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Foraging }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Other_activities }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Kuks }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Quaas }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Moans }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Tail_flags }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Tail_twitches }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Approaches }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Indifferent }}</td>
+      <td style="font-family:'Arial',serif;font-size:10pt"> {{ q.Runs_from }}</td>
       <td >
-	      <li><a href="/squirrel/{{q.Uni}}"> {{ 'update' }}
-      </a></li></td>
+	      <ul><a href="/sightings/{{q.Uni}}"> {{ 'update' }}
+      </a></ul></td>
     </tr> 
     {% endfor %}
 {% else %}

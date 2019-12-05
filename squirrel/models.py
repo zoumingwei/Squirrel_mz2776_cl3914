@@ -5,7 +5,7 @@ from django.utils.translation import gettext as _
 
     
 class Squirrel(models.Model):
-    Lat = models.FloatField('Latitude')
+    Lat = models.FloatField('Latitude',null=True)
     Long = models.FloatField('Longitude')
     Uni = models.CharField('Unique Squirrel ID',max_length=100)
     PM = 'PM'

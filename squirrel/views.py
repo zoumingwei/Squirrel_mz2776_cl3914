@@ -2,7 +2,9 @@ from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Squirrel
 from django.template import loader
+from .forms import SquirrelForm
 # Create your views here.
+
 
 
 def test(request):
@@ -19,10 +21,26 @@ def sighting(request):
 
 
 def update(request,squirrel_uni):
-    squirrel = get_object_or_404(Squirrel,Uni=squirrel_uni)
-    return render(request, 'squirrel/detail.html',{'squirrel':squirrel})
+    squirrel = get_object_or_404(Squirrel, Uni=squirrel_uni)
+    if request.method == "POST":
+        form = SquirrelForm(request.POST, instance=squirrel)
 
-def kk(request,squirrel_uni):
-    squirrel = get_object_or_404(Squirrel,Uni=squirrel_uni)
-    squirrel.Lat = request.POST.get('Lat',False)
-    return HttpResponse('kk')
+        if form.is_valid():
+            form.save()
+            return HttpResponse('kk')
+        
+    else:
+        form = SquirrelForm(instance=squirrel)
+
+    context = {'form':form}
+
+    return render(request, 'squirrel/update.html',context)
+
+def add(request):
+    print('000')
+    return HttpResponse('Squirrel!')
+
+
+
+def stats(request):
+    return HttpResponse('Squirrel Stats!')
