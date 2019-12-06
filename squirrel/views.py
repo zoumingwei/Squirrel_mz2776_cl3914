@@ -27,7 +27,7 @@ def update(request,squirrel_uni):
 
         if form.is_valid():
             form.save()
-            return HttpResponse('kk')
+            return HttpResponse('Thanks for keeping an eye on them. Squirrels are dangerous!')
         
     else:
         form = SquirrelForm(instance=squirrel)
@@ -37,10 +37,23 @@ def update(request,squirrel_uni):
     return render(request, 'squirrel/update.html',context)
 
 def add(request):
-    print('000')
-    return HttpResponse('Squirrel!')
+    if request.method == "POST":
+        form = SquirrelForm(request.POST)
 
+        if form.is_valid():
+            form.save()
+            return HttpResponse('Thanks for reporting them. Squirrels are dangerous!')
+        
+    else:
+        form = SquirrelForm()
+
+    context = {'form':form}
+
+    return render(request, 'squirrel/update.html',context)
 
 
 def stats(request):
     return HttpResponse('Squirrel Stats!')
+
+def map(request):
+    return HttpResponse('This is a map')
