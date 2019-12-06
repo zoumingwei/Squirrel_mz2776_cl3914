@@ -56,4 +56,8 @@ def stats(request):
     return HttpResponse('Squirrel Stats!')
 
 def map(request):
-    return HttpResponse('This is a map')
+    sightings = Squirrel.objects.all()
+    context = {
+            'sightings':sightings,
+    }
+    return render(request, 'squirrel/map.html',context)
