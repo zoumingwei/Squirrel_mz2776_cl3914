@@ -5,27 +5,27 @@ from django.utils.translation import gettext as _
 
     
 class Squirrel(models.Model):
-    Lat = models.FloatField('Latitude',null=True)
+    Lat = models.FloatField('Latitude', null=True)
     Long = models.FloatField('Longitude')
-    Uni = models.CharField('Unique Squirrel ID',max_length=100)
+    Uni = models.CharField('Unique Squirrel ID', max_length=100)
     PM = 'PM'
     AM = 'AM'
     SHIFT = (
         (AM,'AM'),
         (PM,'PM'),
     )
-    Shift = models.CharField('Shift',max_length=2,choices=SHIFT)
+    Shift = models.CharField('Shift', max_length=2, choices=SHIFT)
     Date = models.DateField()
-    Age = models.CharField('Age',max_length=100)
-    Primary_fur_color = models.CharField('Primary Fur Color',max_length=100)
-    Location = models.CharField('Location',max_length=100)
-    Specific_location = models.CharField('Specific Location',max_length=100)
+    Age = models.CharField('Age', max_length=100)
+    Primary_fur_color = models.CharField('Primary Fur Color', max_length=100)
+    Location = models.CharField('Location', max_length=100)
+    Specific_location = models.CharField('Specific Location', max_length=100)
     Running = models.BooleanField(default=False)
     Chasing = models.BooleanField(default=False)
     Climbing = models.BooleanField(default=False)
     Eating = models.BooleanField(default=False)
     Foraging = models.BooleanField(default=False)
-    Other_activities = models.CharField('Other Activities',max_length=100)
+    Other_activities = models.CharField('Other Activities', max_length=100)
     Kuks = models.BooleanField(default=False)
     Quaas = models.BooleanField(default=False)
     Moans = models.BooleanField(default=False)
