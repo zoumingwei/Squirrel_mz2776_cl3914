@@ -53,7 +53,34 @@ def add(request):
 
 
 def stats(request):
-    return HttpResponse('Squirrel Stats!')
+    from django.db.models import Count
+    import datetime
+    AM_squirrel = Squirrel.objects.filter(Shift = 'AM').count()
+    PM_squirrel = Squirrel.objects.filter(Shift = 'PM').count()
+    
+    approaching_squirrel = Squirrel.objects.filter(Approaches = True).count()
+    
+    adult_squirrel = Squirrel.objects.filter(Age='Adult').count()
+    young_squirrel = Squirrel.objects.filter(Age='Juvenile').count()
+
+    recent = Squirrel.objects.filter(Date__gt=datetime.date(2019, 1, 1)).count()
+   
+    on_ground = Squirrel.objects.filter(Location='Ground Plane').count()
+    above_ground = Squirrel.objects.filter(Location='Above Ground').count()
+   
+    context = {
+            'AM_squirrel' : AM_squirrel,
+            'PM_squirrel' : PM_squirrel,
+            'approaching_squirrel' : approaching_squirrel,
+            'adult_squirrel' : adult_squirrel,
+            'young_squirrel' : young_squirrel,
+            'recent' : recent,
+            'on_ground' : on_ground,
+            'above_ground' : above_ground,
+            }
+    print( approaching_squirrel,adult_squirrel,young_squirrel,recent,on_ground,above_ground)
+    return render(request, 'squirrel/stats.html',context)
+
 
 def map(request):
     sightings = Squirrel.objects.all()
