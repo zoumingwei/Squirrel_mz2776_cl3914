@@ -14,6 +14,7 @@ class Command(BaseCommand):
             p = Squirrel(
                 Long=item['X'],
                 Lat=item['Y'],
+                Uni=item['Unique Squirrel ID']
                 Shift=item['Shift'],
                 Date=item['Date'][-4:]+'-'+item['Date'][:2]+'-'+item['Date'][2:4],
                 Age=item['Age'],
